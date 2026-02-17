@@ -34,6 +34,7 @@ _Out of the box integration with OpenAI, Azure, Cohere, Amazon Bedrock, Google G
 - [Examples](#examples)
 - [LLM AI Backends](#llm-ai-backends)
 - [Key Features](#key-features)
+- [Model Context Protocol (MCP)](#model-context-protocol-mcp)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Community](#community)
@@ -62,7 +63,7 @@ brew install k8sgpt
   <!---x-release-please-start-version-->
 
   ```
-  sudo rpm -ivh https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.26/k8sgpt_386.rpm
+  sudo rpm -ivh https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.27/k8sgpt_386.rpm
   ```
   <!---x-release-please-end-->
 
@@ -70,7 +71,7 @@ brew install k8sgpt
 
   <!---x-release-please-start-version-->
   ```
-  sudo rpm -ivh https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.26/k8sgpt_amd64.rpm
+  sudo rpm -ivh https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.27/k8sgpt_amd64.rpm
   ```
   <!---x-release-please-end-->
 </details>
@@ -83,7 +84,7 @@ brew install k8sgpt
   <!---x-release-please-start-version-->
 
 ```
-curl -LO https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.26/k8sgpt_386.deb
+curl -LO https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.27/k8sgpt_386.deb
 sudo dpkg -i k8sgpt_386.deb
 ```
 
@@ -94,7 +95,7 @@ sudo dpkg -i k8sgpt_386.deb
   <!---x-release-please-start-version-->
 
 ```
-curl -LO https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.26/k8sgpt_amd64.deb
+curl -LO https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.27/k8sgpt_amd64.deb
 sudo dpkg -i k8sgpt_amd64.deb
 ```
 
@@ -109,7 +110,7 @@ sudo dpkg -i k8sgpt_amd64.deb
 
   <!---x-release-please-start-version-->
   ```
-  wget https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.26/k8sgpt_386.apk
+  wget https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.27/k8sgpt_386.apk
   apk add --allow-untrusted k8sgpt_386.apk
   ```
   <!---x-release-please-end-->
@@ -118,7 +119,7 @@ sudo dpkg -i k8sgpt_amd64.deb
 
   <!---x-release-please-start-version-->
   ```
-  wget https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.26/k8sgpt_amd64.apk
+  wget https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.27/k8sgpt_amd64.apk
   apk add --allow-untrusted k8sgpt_amd64.apk
   ```
   <!---x-release-please-end-->
@@ -699,7 +700,30 @@ k8sgpt custom-analyzer remove --names "my-custom-analyzer,my-custom-analyzer-2"
 ```
 
 </details>
+## Model Context Protocol (MCP)
 
+K8sGPT provides a Model Context Protocol server that exposes Kubernetes operations as standardized tools for AI assistants like Claude, ChatGPT, and other MCP-compatible clients.
+
+**Start the MCP server:**
+
+Stdio mode (for local AI assistants):
+```bash
+k8sgpt serve --mcp
+```
+
+HTTP mode (for network access):
+```bash
+k8sgpt serve --mcp --mcp-http --mcp-port 8089
+```
+
+**Features:**
+- 12 tools for cluster analysis, resource management, and debugging
+- 3 resources for cluster information access
+- 3 interactive troubleshooting prompts
+- Stateless HTTP mode for one-off invocations
+- Full integration with Claude Desktop and other MCP clients
+
+**Learn more:** See [MCP.md](MCP.md) for complete documentation, usage examples, and integration guides.
 ## Documentation
 
 Find our official documentation available [here](https://docs.k8sgpt.ai)
